@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class DeleteObject : MonoBehaviour {
-
+	
 	private int m_startTime;
-	[HideInInspector]public int intDeathTimer = 180;
-	public bool Kill = false;
+	public int intDeathTimer = 180;
+	[HideInInspector] public bool Kill = false;
 	
 	void Start () 
 	{
