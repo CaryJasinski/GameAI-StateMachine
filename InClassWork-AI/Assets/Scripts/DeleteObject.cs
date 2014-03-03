@@ -26,8 +26,8 @@ public class DeleteObject : MonoBehaviour {
 			Destroy (other.gameObject);
 			Destroy(this.gameObject);
 		}
-		else if(other.gameObject.tag != "Player")
-			Destroy(this.gameObject);
+		//else if(other.gameObject.tag != "Player")
+			//Destroy(this.gameObject);
 	}
 	void SelfDestruct () 
 	{

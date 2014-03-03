@@ -17,10 +17,16 @@ public class SeekPlayer : MonoBehaviour {
 
 	void Update () 
 	{
-		this.transform.LookAt(target.position, transform.up);
-		
-		vectorToChange += fltBulletSpeed * Time.deltaTime * transform.forward;
-		vectorToChange.y = fltStartingYAxis;
-		this.transform.position = vectorToChange;
+		if(target != null)
+		{
+			this.transform.LookAt(target.position, transform.up);
+			vectorToChange += fltBulletSpeed * Time.deltaTime * transform.forward;
+			vectorToChange.y = fltStartingYAxis;
+			this.transform.position = vectorToChange;
+		}
+		else
+		{
+			target = GameObject.FindGameObjectWithTag ("Player").transform;
+		}
 	}
 }

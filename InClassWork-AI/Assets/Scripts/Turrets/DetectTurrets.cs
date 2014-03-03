@@ -11,11 +11,6 @@ public class DetectTurrets : MonoBehaviour {
 	public bool PlayerInRange = false, DecideToShoot = false;
 
 	void Start () {
-		//stateMachines.Add(this.gameObject);
-
-	
-
-		//TurretsInRadius.Add(this.gameObject);
 
 	}
 
@@ -25,8 +20,6 @@ public class DetectTurrets : MonoBehaviour {
 		foreach(GameObject turret in TurretsInRadius){
 			if(turret.transform.GetComponent<DetectTurrets>().PlayerInRange)
 				DecideToShoot = true;
-
-
 		}
 		if(DecideToShoot)
 			this.gameObject.SendMessage("StartShooting");
@@ -34,7 +27,6 @@ public class DetectTurrets : MonoBehaviour {
 			this.gameObject.SendMessage("StopShooting");
 
 		DecideToShoot = false;
-
 	}
 	public List<GameObject> CheckDetectionRadius () {
 		List<GameObject> detectedGameObjects = new List<GameObject>();
@@ -44,7 +36,6 @@ public class DetectTurrets : MonoBehaviour {
 			{
 				detectedGameObjects.Add(col.gameObject);
 			}
-
 		}
 		return detectedGameObjects;
 	}
@@ -57,5 +48,5 @@ public class DetectTurrets : MonoBehaviour {
 		if(other.tag == "Player") {
 			PlayerInRange = false;
 		}
-  }
+  	}
 }

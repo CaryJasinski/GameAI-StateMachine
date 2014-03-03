@@ -20,37 +20,42 @@ public class TurretTargeting : MonoBehaviour {
 		seekPlayer = (SeekPlayer)goBullet.GetComponent<SeekPlayer>();
 	}
 
-	void Update () {
-		if(goPlayer == null){
-
-			goPlayer = GameObject.FindGameObjectWithTag ("Player");
+	void Update () 
+	{
+		if(goPlayer != null)
+		{
+			this.transform.GetChild(0).transform.LookAt(new Vector3(goPlayer.transform.position.x, 
+			                                                        this.transform.GetChild (0).transform.position.y, 
+			                                                        goPlayer.transform.position.z));
+			
+			if(isFiring)
+			{
+				if(m_intStartTime >= intFireRate)
+					ShootBullet ();
+				m_intStartTime++;
+			}
 		}
-
-		this.transform.GetChild(0).transform.LookAt(new Vector3(goPlayer.transform.position.x, 
-		                             this.transform.GetChild (0).transform.position.y, 
-		                             goPlayer.transform.position.z));
-
-		if(isFiring){
-			if(m_intStartTime >= intFireRate)
-				ShootBullet ();
-			m_intStartTime++;
+		else
+		{
+			goPlayer = GameObject.FindGameObjectWithTag ("Player");
 		}
 	}
 	void ShootBullet (){
 		GameObject firedBullet = (GameObject)Instantiate (goBullet, tBarrel.position, Quaternion.identity);
 		firedBullet.name = "Bullet";
-		//firedBullet.transform.parent = goPlayer.transform;
 		firedBullet.transform.localScale *= intBulletSize;
 		firedBullet.rigidbody.velocity = tBarrel.forward * fltBulletSpeed;
 		firedBullet.transform.GetComponent<DeleteObject>().intDeathTimer = intBulletLife;
 		m_intStartTime = 0;
 		seekPlayer.fltBulletSpeed = fltBulletSpeed;
 	}
-	void StartShooting () {
+	void StartShooting () 
+	{
 		if(!isFiring)
 			isFiring = true;
 	}
-	void StopShooting () {
+	void StopShooting () 
+	{
 		if(isFiring)
 			isFiring = false;
 	}
