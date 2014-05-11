@@ -22,7 +22,6 @@ public class Platform : MonoBehaviour, PlatformState {
 				startTimer = false;
 				TimerStart = 0;
 			}
-
 		}
 
 		if(s != State.lowered){

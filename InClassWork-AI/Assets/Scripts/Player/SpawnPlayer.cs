@@ -6,7 +6,7 @@ public class SpawnPlayer : MonoBehaviour {
 	public GameObject Player;
 	public Vector3 SpawnPosition = Vector3.zero;
 	
-	void Start () {
+	void Awake () {
 		SpawnPosition = this.transform.position;
 		if(GameObject.FindGameObjectWithTag("Player") == null){
 			Instantiate(Player, SpawnPosition, Quaternion.identity);

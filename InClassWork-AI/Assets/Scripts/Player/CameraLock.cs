@@ -23,7 +23,7 @@ public class CameraLock : MonoBehaviour {
 
 	void FindPlayer () {
 		Player = GameObject.FindGameObjectWithTag("Player");
-		PlayerPosition = Player.transform.position;
+		//PlayerPosition = Player.transform.position;
 	}
 
 	void LockCamera () {
