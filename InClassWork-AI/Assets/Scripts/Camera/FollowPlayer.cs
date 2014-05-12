@@ -4,6 +4,8 @@ using System.Collections;
 public class FollowPlayer : MonoBehaviour {
 
 	public GameObject player;
+	public Vector3 cameraOffset = new Vector3(-5, 15, -5);
+
 
 	void Start () {
 		LockCameraToPlayer();
@@ -17,9 +19,7 @@ public class FollowPlayer : MonoBehaviour {
 		if(player == null)
 			player = GameObject.FindGameObjectWithTag("Player");
 
-		transform.position = new Vector3(player.transform.position.x - 5,
-		                                 player.transform.position.y + 15, 
-		                                 player.transform.position.z - 5);
+		transform.position = player.transform.position + cameraOffset;
 
 		transform.LookAt(player.transform);
 	}
