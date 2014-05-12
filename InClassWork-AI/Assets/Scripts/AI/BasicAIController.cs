@@ -65,13 +65,6 @@ public class BasicAIController : MonoBehaviour {
 			break;
 		}
 	}
-	void AssignRandomWaypoint()
-	{
-		int randWaypoint = Random.Range(0, Waypoints.Count);
-		agent.SetDestination(Waypoints[randWaypoint].position);
-		CurrentWaypoint = Waypoints[randWaypoint];
-		Waypoints.RemoveAt(randWaypoint);
-	}
 
 	void ScanForPlayer()
 	{
@@ -91,6 +84,15 @@ public class BasicAIController : MonoBehaviour {
 			}
 		}
 	}
+
+	void AssignRandomWaypoint()
+	{
+		int randWaypoint = Random.Range(0, Waypoints.Count);
+		agent.SetDestination(Waypoints[randWaypoint].position);
+		CurrentWaypoint = Waypoints[randWaypoint];
+		Waypoints.RemoveAt(randWaypoint);
+	}
+	
 	void AssignNearestWaypoint()
 	{
 		float nearestDistanceSqr = Mathf.Infinity;
